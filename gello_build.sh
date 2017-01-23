@@ -128,7 +128,7 @@ function compile() {
     GELLO_SRC=true
 
     # Make things
-    ninja -C out/Release swe_android_browser_apk
+    ninja -C out/Release swe_browser_apk
     local BUILDRET=$?
 
     if [ "$LOCAL" == true ]; then
