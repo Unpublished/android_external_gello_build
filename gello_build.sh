@@ -127,6 +127,10 @@ function compile() {
     # because we just wait it to build from here
     GELLO_SRC=true
 
+    # Generate build.ninja
+    gn gen out/Release --args="target_os=\"android\" is_debug=false"
+    local BUILDRET=$?
+
     # Make things
     ninja -C out/Release swe_browser_apk
     local BUILDRET=$?
