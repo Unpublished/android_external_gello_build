@@ -118,7 +118,7 @@ function setup() {
 # Compile
 #
 function compile() {
-    local TMP_APK=$SRC_GELLO/out/Release/apks/SWE_AndroidBrowser.apk
+    local TMP_APK=$SRC_GELLO/out/Release/apks/SWE_Browser.apk
     local OUT_TARGET=$TOP_GELLO/Gello.apk
 
     cd $SRC_GELLO
