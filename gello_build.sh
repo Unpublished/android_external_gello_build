@@ -127,6 +127,10 @@ function compile() {
     # because we just wait it to build from here
     GELLO_SRC=true
 
+    # Generate build.ninja
+    GYP_CHROMIUM_NO_ACTION=1 gn gen out/Release --args='swe_channels="custom" target_os="android" is_debug=false symbol_level=0'
+    local BUILDRET=$?
+
     # Make things
     ninja -C out/Release swe_browser_apk
     local BUILDRET=$?
