@@ -45,8 +45,8 @@ function sync() {
 
         # Clean out stuffs
         rm -rf $SRC_GELLO/out
-        find $TOP_GELLO -name index.lock -exec rm {} \;
-        gclient recurse git clean -fdx .
+        #find $TOP_GELLO -name index.lock -exec rm {} \;
+        #gclient recurse git clean -fdx .
 
     fi
 
