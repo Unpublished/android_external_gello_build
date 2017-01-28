@@ -54,7 +54,7 @@ function sync() {
         cd $TOP_GELLO/env
 
         echo "Syncing now!"
-        gclient sync -n --no-nag-max
+        GYP_CHROMIUM_NO_ACTION=1 gclient sync
         local SYNCRET=$?
 
         if [ "$CLEAN" == true ] && [ "$SYNCRET" == 0 ]; then
@@ -100,7 +100,7 @@ function setup() {
 
     if [ "$FAST" != true ] && [ -f $DONE_FILE ]; then
         # !! The first time it asks a manual input to accept licenses !!
-        GYP_DEFINES="$GYP_DEFINES OS=android swe_channel=cm" gclient runhooks
+        GYP_CHROMIUM_NO_ACTION=1 gclient runhooks -v
         return $?
     else
         return 0
