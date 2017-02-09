@@ -123,12 +123,16 @@ function compile() {
 
     cd $SRC_GELLO
 
+    export CCACHE_CPP2=yes
+    export CCACHE_SLOPPINESS=time_macros
+    export PATH=$SRC_GELLO/third_party/llvm-build/Release+Asserts/bin:$PATH
+
     # Gello "shell" builds only if we have GELLO_SRC == true ,
     # because we just wait it to build from here
     GELLO_SRC=true
 
     # Generate build.ninja
-    GYP_CHROMIUM_NO_ACTION=1 gn gen out/Release --args='swe_channels="custom" target_os="android" is_debug=false symbol_level=0'
+    GYP_CHROMIUM_NO_ACTION=1 gn gen out/Release --args='swe_channels="custom" target_os="android" is_debug=false symbol_level=0 cc_wrapper="ccache"'
     local BUILDRET=$?
 
     # Make things
